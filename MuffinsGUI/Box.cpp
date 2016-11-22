@@ -10,12 +10,10 @@
 
 //Public member functions
 
-Box::Box(Shader shader, Window* window, GLfloat x, GLfloat y, GLfloat width, GLfloat height, std::string boxText) : lowerLeftX((2.0 * x) - 1.0), lowerLeftY((2.0 * y) - 1.0), boxWidth(2.0 * width), boxHeight(2.0 * height), boxColor(glm::vec4(Box::defaultColor, Box::defaultColor, Box::defaultColor, 1.0)), text(boxText) {
+Box::Box(Shader shader, Window* window, GLfloat x, GLfloat y, GLfloat width, GLfloat height, std::string boxText) : lowerLeftX((2.0 * x) - 1.0), lowerLeftY((2.0 * y) - 1.0), boxWidth(2.0 * width), boxHeight(2.0 * height), boxColor(glm::vec4(Box::defaultColor, Box::defaultColor, Box::defaultColor, 1.0)), text(boxText), font(Font(FONT_PATH)) {
     
     this->boxWindow = window;
     this->boxShader = shader;
-    
-    this->font = Font(FONT_PATH);
     
     GLfloat data[] = {
         //Rectangle is drawn by two triangles
@@ -61,12 +59,10 @@ Box::Box(Shader shader, Window* window, GLfloat x, GLfloat y, GLfloat width, GLf
     glBindVertexArray(0);
 }
 
-Box::Box(Shader shader, Window* window, GLfloat x, GLfloat y, GLfloat width, GLfloat height, glm::vec4 color, std::string boxText) : lowerLeftX((2.0 * x) - 1.0), lowerLeftY((2.0 * y) - 1.0), boxWidth(2.0 * width), boxHeight(2.0 * height), boxColor(color), text(boxText) {
+Box::Box(Shader shader, Window* window, GLfloat x, GLfloat y, GLfloat width, GLfloat height, glm::vec4 color, std::string boxText) : lowerLeftX((2.0 * x) - 1.0), lowerLeftY((2.0 * y) - 1.0), boxWidth(2.0 * width), boxHeight(2.0 * height), boxColor(color), text(boxText), font(Font(FONT_PATH)) {
     
     this->boxWindow = window;
     this->boxShader = shader;
-    
-    this->font = Font(FONT_PATH);
     
     GLfloat data[] = {
         //Rectangle is drawn by two triangles

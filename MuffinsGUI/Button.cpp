@@ -10,7 +10,7 @@
 
 //Public member functions
 
-Button::Button(Shader shader, Window* window, GLfloat x, GLfloat y, GLfloat width, GLfloat height, std::string buttonAction, std::string buttonText) : lowerLeftX((2.0 * x) - 1.0), lowerLeftY((2.0 * y) - 1.0), buttonWidth(2.0 * width), buttonHeight(2.0 * height), action(buttonAction), text(buttonText) {
+Button::Button(Shader shader, Window* window, GLfloat x, GLfloat y, GLfloat width, GLfloat height, std::string buttonAction, std::string buttonText) : lowerLeftX((2.0 * x) - 1.0), lowerLeftY((2.0 * y) - 1.0), buttonWidth(2.0 * width), buttonHeight(2.0 * height), action(buttonAction), text(buttonText), font(Font(FONT_PATH)) {
     
     this->buttonWindow = window;
     this->buttonShader = shader;
@@ -114,7 +114,7 @@ void Button::render(bool mouseDown, bool mouseUp, bool buttonInteraction) {
     }
     
     //Render the text on the button
-    this->font.render(buttonText, textPos.x, textPos.y, scale, glm::vec3(1.0f, 1.0f, 1.0f));
+    this->font.render(buttonText, textPos.x, textPos.y, scale, glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 1.0f);
 }
 
 bool Button::isPressed() {
