@@ -71,7 +71,7 @@ int main(int argc, const char * argv[]) {
     Shader interfaceShader("Shaders/interface/interface.vert", "Shaders/interface/interface.frag");
     Shader buttonShader("Shaders/button/button.vert", "Shaders/button/button.frag");
     
-    Interface i(&interfaceShader, &buttonShader, &window);
+    Interface i(interfaceShader, buttonShader, &window);
     
     //Add buttons and information boxes here
     

@@ -8,7 +8,7 @@
 
 #include "Interface.hpp"
 
-Interface::Interface(Shader* shader, Shader* shaderForButtons, Window* window) {
+Interface::Interface(Shader shader, Shader shaderForButtons, Window* window) : texture(Texture("Resources/texture.png", 0, "tex")) {
     this->interfaceWindow = window;
     this->interfaceShader = shader;
     this->buttonShader = shaderForButtons;
@@ -43,7 +43,9 @@ Interface::Interface(Shader* shader, Shader* shaderForButtons, Window* window) {
 
 void Interface::render(bool mouseDown, bool mouseUp, bool buttonInteraction) {
     //Bind the VAO and draw shapes
-    this->interfaceShader->use();
+    this->interfaceShader.use();
+    
+    this->texture.use(this->interfaceShader);
     
     glBindVertexArray(this->VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);

@@ -26,6 +26,7 @@
 //Local includes
 #include "Shader.hpp"
 #include "Font.hpp"
+#include "Texture.hpp"
 #include "Box.hpp"
 #include "Button.hpp"
 #include "Window.hpp"
@@ -37,11 +38,11 @@ public:
     /*!
      * A class representing an interface box.
      *
-     * @param shader A pointer to a compiled shader for the interface box to use for rendering.
-     * @param shaderForButtons A pointer to another compiled shader that will be used for rendering the buttons, as well as boxes, on this interface.
+     * @param shader A compiled shader object for the interface box to use for rendering.
+     * @param shaderForButtons A compiled shader object that will be used for rendering the buttons, as well as boxes, on this interface.
      * @param window A pointer to the current window object.
      */
-    Interface(Shader* shader, Shader* shaderForButtons, Window* window);
+    Interface(Shader shader, Shader shaderForButtons, Window* window);
     
     //Public properties
     
@@ -108,7 +109,8 @@ public:
      * @param The key of the button to be edited.
      *
      * @returns If the button was successfully altered. False is returned if there was no button with the given key.
-     */    bool setButtonText(std::string text, std::string name);
+     */
+    bool setButtonText(std::string text, std::string name);
     
     /*!
      * Set the action text on a button.
@@ -134,11 +136,13 @@ public:
 private:
     //OpenGL and GLFW properties
     Window *interfaceWindow;
-    Shader *interfaceShader; //Compiled shader
-    Shader *buttonShader; //Shader for the buttons
+    Shader interfaceShader; //Compiled shader
+    Shader buttonShader; //Shader for the buttons
     GLuint VAO; //VAO (Vertex Array Object) stores objects that can be drawn, including VBO data with the linked shader
     //VBO (Vertex Buffer Object) stores vertex data in the GPU graphics card. Will be stored in VAO
     GLuint VBO;
+    
+    Texture texture;
     
 };
 
